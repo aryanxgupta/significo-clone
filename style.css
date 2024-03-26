@@ -64,3 +64,7 @@ body[theme="white"] .section{
 .video-div{
     clip-path: circle(var(--clip) at 50% 50%);
 }
+.team .picture{
+    transition: all ease;
+    pointer-events: none;
+}
