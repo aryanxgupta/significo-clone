@@ -46,6 +46,7 @@ function teamAnimation(){
         el.addEventListener("mousemove",(dets)=>{
             gsap.to(el.querySelector(".picture"),{
                 opacity: 1 ,
+                top: dets.clientY - el.getBoundingClientRect().top ,
                 x: gsap.utils.mapRange(0, window.innerWidth, -200, 200, dets.clientX) , 
                 ease: Power2,
                 duration: 0.2, 
@@ -150,6 +151,18 @@ function slideAnimation(){
             start: "bottom 20%",
             end: "bottom -10%", 
             scrub:4 , 
+            onEnter: function(){
+                let total = 0 ; 
+                let elem = document.querySelector(".women-percent") ; 
+                let inter = setInterval(function(){
+                    if(total < 49){
+                        elem.textContent = total++ ; 
+                    }else{
+                        elem.textContent = total ;
+                        clearInterval(inter) ;
+                    }
+                },40)
+            }
         }
     })
     tl5.to(".slide3 .img1",{
@@ -163,6 +176,28 @@ function slideAnimation(){
     })
     .to(".slide3 .small-text",{
         scale:1.2
+    })
+
+    gsap.to(".slide2 .people-count h1",{
+        scrollTrigger:{
+            trigger:".slide2",
+            start: "bottom 80%",
+            end: "bottom 45%", 
+            scrub:4 , 
+            onEnter: function(){
+                let total = 0 ; 
+                let elem = document.querySelector(".people-in-millions") ; 
+                let inter = setInterval(function(){
+                    if(total < 20){
+                        elem.textContent = total++ ; 
+                    }else{
+                        elem.textContent = total ;
+                        clearInterval(inter) ;
+                    }
+                },40) 
+
+            }
+        }
     })
     
 }
